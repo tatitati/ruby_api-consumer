@@ -8,7 +8,6 @@ class OrderStreamBuilder
         randomAmountOfOrders.times do |n|
             @orders.push(OrderBuilder.new.build)
         end
-        self
     end
 
     def withOrders(ordersList)
