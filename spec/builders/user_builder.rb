@@ -5,6 +5,9 @@ class UserBuilder
         @eventStream = OrderStreamBuilder.new.build
         @email = Faker::Internet.email
         @id = Faker::String.random([5, 10])
+        @phone = Faker::PhoneNumber.phone_number
+        @firstName = Faker::Name.first_name
+        @lastName = Faker::Name.last_name
     end
 
     def withAmountOfOrders(n)
@@ -23,6 +26,6 @@ class UserBuilder
     end
 
     def build()
-        User.new(@id, @email, @eventStream)
+        User.new(@id, @email, @phone, @firstName, @lastName, @eventStream)
     end
 end

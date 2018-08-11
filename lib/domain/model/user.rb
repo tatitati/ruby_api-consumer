@@ -1,13 +1,13 @@
 require_relative "./aggregate"
 
 class User < Aggregate
-    def initialize(id, email, ordersStream = OrderStream.new, phone, firstName, lastName)
+    def initialize(id, email, phone, firstName, lastName, ordersStream = OrderStream.new)
         @id = id
         @email = email
-        @ordersStream = ordersStream
         @phone = phone
         @firstName = firstName
         @lastName = lastName
+        @ordersStream = ordersStream
     end
 
     def email
