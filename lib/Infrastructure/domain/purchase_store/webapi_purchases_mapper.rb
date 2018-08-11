@@ -22,7 +22,6 @@ class WebapiPurchasesMapper
             ordersStream[userId] = OrderStream.new(ordersPerUser)
         end
 
-        pp ordersStream
         ordersStream
     end
 end
