@@ -10,7 +10,7 @@ describe "UserService" do
                 user2 = UserBuilder.new.withAmountOfOrders(10).withEmail('email3@domain.co').build,
                 user3 = UserBuilder.new.withAmountOfOrders(20).withEmail('email1@domain.co').build,
                 user4 = UserBuilder.new.withAmountOfOrders(1).withEmail('email4@domain.co').build,
-                user4 = UserBuilder.new.withAmountOfOrders(0).withEmail('email4@domain.co').build
+                user5 = UserBuilder.new.withAmountOfOrders(0).withEmail('email5@domain.co').build
             ];
 
             userService = UserService.new
