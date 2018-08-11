@@ -1,5 +1,5 @@
 require "domain/model/user"
-require_relative "../../builders/user_builder"
+require_relative "../../../builders/user_builder"
 require "domain/services/user_service"
 
 describe "UserService" do

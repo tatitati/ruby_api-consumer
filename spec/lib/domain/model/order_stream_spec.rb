@@ -1,6 +1,6 @@
 require "domain/model/order_stream"
-require_relative "../../builders/order_stream_builder"
-require_relative "../../builders/order_builder"
+require_relative "../../../builders/order_stream_builder"
+require_relative "../../../builders/order_builder"
 
 describe "Order" do
     context "Given No orders" do

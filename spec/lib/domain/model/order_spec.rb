@@ -1,6 +1,6 @@
 # spec/string_calculator_spec.rb
 require "domain/model/order"
-require_relative "../../builders/order_builder"
+require_relative "../../../builders/order_builder"
 
 describe "Order" do
     context "Given initial data information" do
