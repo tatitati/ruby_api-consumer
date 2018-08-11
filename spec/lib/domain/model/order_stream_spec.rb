@@ -5,7 +5,7 @@ require_relative "../../../builders/order_builder"
 describe "Order" do
     context "Given No orders" do
         it "We can create an order stream empty" do
-          orderStream = OrderStream.new()
+          orderStream = OrderStreamBuilder.new.withOrders([]).build
           expect(orderStream).to be_instance_of(OrderStream)
           expect(orderStream.count).to eql(0)
         end
@@ -13,19 +13,19 @@ describe "Order" do
 
     context "Given Some orders" do
         it "knows the total amount of orders in the stream" do
-            orderStream = OrderStream.new([
+            orderStream = OrderStreamBuilder.new.withOrders([
                 OrderBuilder.new.withPrice(100).build(),
                 OrderBuilder.new.withPrice(50).build()
-            ])
+            ]).build
             expect(orderStream.count).to eql(2)
         end
 
         it "Knows how much was spent in total" do
-            orderStream = OrderStream.new([
+            orderStream = OrderStreamBuilder.new.withOrders([
                 OrderBuilder.new.withPrice(100).build(),
                 OrderBuilder.new.withPrice(50).build(),
                 OrderBuilder.new.withPrice(9).build()
-            ])
+            ]).build
 
             expect(orderStream.totalSpent).to eql(159)
         end
