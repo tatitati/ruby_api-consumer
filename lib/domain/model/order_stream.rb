@@ -12,7 +12,6 @@ class OrderStream
         @listOrders.each do |value|
             totalSpent += value.price
         end
-
         totalSpent
     end
 
