@@ -1,5 +1,3 @@
-require "pp"
-
 class UserService
     def findMostLoyal(usersList)
         mostLoyalUser = nil

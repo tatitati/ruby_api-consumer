@@ -1,5 +1,3 @@
-require "pp"
-
 class OrderStream
     def initialize(listOrders = [])
         @listOrders = listOrders
