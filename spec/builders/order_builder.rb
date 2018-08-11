@@ -8,13 +8,11 @@ class OrderBuilder
 
     def withName(name)
         @name = name
-
         self
     end
 
     def withPrice(price)
         @price = price
-
         self
     end
 

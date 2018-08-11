@@ -8,13 +8,11 @@ class OrderStreamBuilder
         randomAmountOfOrders.times do |n|
             @orders.push(OrderBuilder.new.build)
         end
-
         self
     end
 
     def withOrders(ordersList)
         @orders = ordersList
-
         self
     end
 
@@ -24,7 +22,6 @@ class OrderStreamBuilder
             @orders.push(OrderBuilder.new.build)
 
         end
-
         self
     end
 

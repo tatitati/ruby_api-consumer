@@ -14,7 +14,6 @@ class OrderStream
         end
 
         totalSpent
-
     end
 
     def getOrdersName
@@ -22,7 +21,6 @@ class OrderStream
         @listOrders.each do |order|
             items.push(order.nameItem)
         end
-
         items
     end
 end

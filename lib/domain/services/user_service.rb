@@ -1,7 +1,6 @@
 class UserService
     def findMostLoyal(usersList)
         mostLoyalUser = nil
-
         usersList.each do |user|
             if mostLoyalUser == nil
                 mostLoyalUser = user
@@ -12,13 +11,11 @@ class UserService
                 mostLoyalUser = user
             end
         end
-
         mostLoyalUser
     end
 
     def findMostSoldItem(usersList)
         summarySoldItems = []
-
         usersList.each do |user|
             summarySoldItems = summarySoldItems + user.listOrderedItems
         end
@@ -26,7 +23,6 @@ class UserService
         # count ocurrencies o item name
         stats = {}
         summarySoldItems.each do |name|
-
             if stats.include?(name)
                 stats[name] += 1
             else
@@ -50,7 +46,6 @@ class UserService
         if mostSold.nil?
             return nil
         end
-
         mostSold['name']
     end
 end
