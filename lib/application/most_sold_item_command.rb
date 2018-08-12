@@ -1,6 +1,6 @@
 require_relative 'command'
 
-class MostLoyalSoldItemCommand < Command
+class MostSoldItemCommand < Command
     def initialize()
         @repository = UserRepository.new(
             WebapiUsersStore.new(WebapiPurchasesStore.new),
