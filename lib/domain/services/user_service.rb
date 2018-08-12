@@ -46,10 +46,20 @@ class UserService
                 mostSold = {"name" => nameItem, "count" => count}
             end
         end
-        
+
         if mostSold.nil?
             return nil
         end
         mostSold['name']
+    end
+
+    def findSpentByUser(email, listUsers)
+        listUsers.each do |user|
+            if user.email == email
+                return user.totalSpent
+            end
+        end
+
+        nil
     end
 end

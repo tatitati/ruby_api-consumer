@@ -57,4 +57,44 @@ describe "UserService" do
             expect(UserService.new.findMostSoldItem(users)).to eql(nil)
         end
     end
+
+    context "Given List of users with different amount of orders" do
+        it "it provides how much spent an specific user" do
+            users = [
+                UserBuilder.new
+                .withEmail('email1@domain.com')
+                .withOrders([
+                    OrderBuilder.new.withPrice(15).build,
+                    OrderBuilder.new.withPrice(10).build,
+                ]).build,
+                UserBuilder.new
+                .withEmail('email2@domain.com')
+                .withOrders([
+                    OrderBuilder.new.withPrice(22).build,
+                    OrderBuilder.new.withPrice(100).build,
+                ]).build
+            ];
+
+            expect(UserService.new.findSpentByUser('email2@domain.com', users)).to eql(122)
+        end
+
+        it "EDGE CASE: it cannot provide information about how much spent the user if the user is not in the list" do
+            users = [
+                UserBuilder.new
+                .withEmail('email1@domain.com')
+                .withOrders([
+                    OrderBuilder.new.withPrice(15).build,
+                    OrderBuilder.new.withPrice(10).build,
+                ]).build,
+                UserBuilder.new
+                .withEmail('email2@domain.com')
+                .withOrders([
+                    OrderBuilder.new.withPrice(22).build,
+                    OrderBuilder.new.withPrice(100).build,
+                ]).build
+            ];
+
+            expect(UserService.new.findSpentByUser('nonexistant_user@domain.com', users)).to eql(nil)
+        end
+    end
 end
