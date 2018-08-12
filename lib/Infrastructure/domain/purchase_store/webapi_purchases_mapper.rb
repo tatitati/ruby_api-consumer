@@ -2,7 +2,7 @@ require 'json'
 
 class WebapiPurchasesMapper
 
-    def self.toDomainModel(jsonPurchases)
+    def toDomainModel(jsonPurchases)
         purchasesData = JSON.parse(jsonPurchases)['data']
 
         ordersGroupedByUserId = {}
