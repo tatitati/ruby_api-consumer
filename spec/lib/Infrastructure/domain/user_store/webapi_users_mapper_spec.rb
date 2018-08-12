@@ -17,6 +17,7 @@ describe "WebapiMapper" do
             purchasesGroupedByUser = {"KZHR-1H35-2IH8-JXYN" => OrderStreamBuilder.new.withAmountOfOrders(3).build}
             domainModels = WebapiUsersMapper.toDomainModel(getGivenUsersResponseJson(), purchasesGroupedByUser)
 
+            expect(domainModels.values).to all(be_an(User))
             expect(domainModels["schimmel_quincy@ernser.io"].countOrders).to eql(3)
             expect(domainModels["terry_henry@doyle.io"].countOrders).to eql(0)
         end
