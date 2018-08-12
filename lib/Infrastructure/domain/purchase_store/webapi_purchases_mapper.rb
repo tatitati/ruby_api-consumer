@@ -8,7 +8,7 @@ class WebapiPurchasesMapper
         ordersGroupedByUserId = {}
         purchasesData.each do |purchaseData|
             order = Order.new(purchaseData['item'], purchaseData['spend'])
-            
+
             userId = purchaseData['user_id']
             if ordersGroupedByUserId.has_key?(purchaseData['user_id'])
                 ordersGroupedByUserId[userId].push(order)
