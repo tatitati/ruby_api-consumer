@@ -1,5 +1,6 @@
 require "faraday"
 require_relative "users_store"
+require_relative "./webapi_users_mapper"
 
 class WebapiUsersStore < UsersStore
     def initialize(webapiPurchasesStore)

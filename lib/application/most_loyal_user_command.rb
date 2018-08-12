@@ -1,4 +1,8 @@
 require_relative 'command'
+require_relative '../infrastructure/domain/user_repository'
+require_relative '../infrastructure/domain/purchase_store/webapi_purchases_store'
+require_relative '../infrastructure/domain/user_store/webapi_users_store'
+require_relative '../domain/services/user_service'
 
 class MostLoyalUserCommand < Command
     def initialize()

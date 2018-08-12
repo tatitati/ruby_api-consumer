@@ -4,7 +4,7 @@ class WebapiUsersMapper
     def self.toDomainModel(jsonUsersResponse, purchasesGroupedByuser)
         usersData = JSON.parse(jsonUsersResponse)['data']
 
-        usersModels = {}
+        usersModels = []
         usersData.each do |userData|
 
             purchasesFouser = OrderStream.new([])
@@ -12,14 +12,14 @@ class WebapiUsersMapper
                 purchasesFouser = purchasesGroupedByuser[userData['id']]
             end
 
-            usersModels[userData['email']] = User.new(
+            usersModels.push(User.new(
                 userData['id'],
                 userData['email'],
                 userData['phone'],
                 userData['first_name'],
                 userData['last_name'],
                 purchasesFouser
-            )
+            ))
         end
 
         usersModels

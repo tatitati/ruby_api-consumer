@@ -9,8 +9,8 @@ class OrderStream
 
     def totalSpent
         totalSpent = 0
-        @listOrders.each do |value|
-            totalSpent += value.price
+        @listOrders.each do |orderInStream|
+            totalSpent += orderInStream.price
         end
         totalSpent
     end

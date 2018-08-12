@@ -6,19 +6,21 @@ describe "WebapiUsersMapper" do
         it "It can create multiple users with empty order stream" do
             domainModels = WebapiUsersMapper.toDomainModel(getGivenUsersResponseJson(), {})
 
-            expect(domainModels.values.length).to eql(2)
-            expect(domainModels.values).to all(be_an(User))
-            expect(domainModels["schimmel_quincy@ernser.io"].countOrders).to eql(0)
-            expect(domainModels["terry_henry@doyle.io"].countOrders).to eql(0)
+            expect(domainModels.length).to eql(2)
+            expect(domainModels).to all(be_an(User))
+
+            expect(domainModels.first.countOrders).to eql(0)
+            expect(domainModels.last.countOrders).to eql(0)
         end
 
         it "It can create multiple users with order stream populated" do
             purchasesGroupedByUser = {"KZHR-1H35-2IH8-JXYN" => OrderStreamBuilder.new.withAmountOfOrders(3).build}
             domainModels = WebapiUsersMapper.toDomainModel(getGivenUsersResponseJson(), purchasesGroupedByUser)
 
-            expect(domainModels.values).to all(be_an(User))
-            expect(domainModels["schimmel_quincy@ernser.io"].countOrders).to eql(3)
-            expect(domainModels["terry_henry@doyle.io"].countOrders).to eql(0)
+            expect(domainModels).to all(be_an(User))
+
+            expect(domainModels.first.countOrders).to eql(3)
+            expect(domainModels.last.countOrders).to eql(0)
         end
     end
 end

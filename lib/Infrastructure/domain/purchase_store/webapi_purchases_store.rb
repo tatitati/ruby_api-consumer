@@ -1,5 +1,6 @@
 require "faraday"
 require_relative "purchases_store"
+require_relative "./webapi_purchases_mapper"
 
 class WebapiPurchasesStore < PurchasesStore
     def initialize()

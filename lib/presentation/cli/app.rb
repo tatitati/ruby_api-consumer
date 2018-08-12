@@ -1,4 +1,9 @@
 require "pp"
+require_relative "../../application/most_loyal_user_command"
+require_relative "../../application/most_sold_item_command"
+require_relative "../../application/total_spent_by_user_command"
+require_relative "../../application/total_spent_by_user_request"
+
 
 commands = ['most_sold', 'total_spend', 'most_loyal']
 command = ARGV[0]

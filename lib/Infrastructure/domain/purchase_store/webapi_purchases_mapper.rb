@@ -1,4 +1,7 @@
 require 'json'
+require_relative '../../../domain/model/order'
+require_relative '../../../domain/model/order_stream'
+require_relative '../../../domain/model/user'
 
 class WebapiPurchasesMapper
 
@@ -7,7 +10,7 @@ class WebapiPurchasesMapper
 
         ordersGroupedByUserId = {}
         purchasesData.each do |purchaseData|
-            order = Order.new(purchaseData['item'], purchaseData['spend'])
+            order = Order.new(purchaseData['item'], purchaseData['spend'].to_f)
 
             userId = purchaseData['user_id']
             if ordersGroupedByUserId.has_key?(purchaseData['user_id'])
