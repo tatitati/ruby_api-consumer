@@ -1,6 +1,7 @@
 require 'faker'
+require_relative "builder"
 
-class OrderStreamBuilder
+class OrderStreamBuilder < Builder
     def initialize()
         @orders = []
         randomAmountOfOrders = Faker::Number.between(0, 5)

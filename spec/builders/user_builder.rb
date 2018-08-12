@@ -1,6 +1,7 @@
 require "faker"
+require_relative "builder"
 
-class UserBuilder
+class UserBuilder < Builder
     def initialize()
         @eventStream = OrderStreamBuilder.new.build
         @email = Faker::Internet.email

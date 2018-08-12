@@ -1,6 +1,7 @@
 require 'faker'
+require_relative "builder"
 
-class OrderBuilder
+class OrderBuilder < Builder
     def initialize()
         @name = Faker::Name.name
         @price = Faker::Number.decimal(2)
