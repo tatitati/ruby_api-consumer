@@ -6,7 +6,6 @@ require "pp"
 describe "UserRepository" do
     context "Given user store provides a list of users with their orders" do
         it "Can find the most sold item" do
-
             stubUsersStore = double(WebapiUsersStore)
             allow(stubUsersStore).to receive(:findAll) {
                 [
@@ -25,9 +24,8 @@ describe "UserRepository" do
             }
 
             userRepository = UserRepository.new(stubUsersStore, UserService.new)
-            mostSoldItem = userRepository.findItemMostSold()
 
-            expect(mostSoldItem).to eql('Star Wars')
+            expect(userRepository.findItemMostSold()).to eql('Star Wars')
         end
 
         it "Can find the most loyal user" do
@@ -45,14 +43,12 @@ describe "UserRepository" do
                     OrderBuilder.new.withName('cinema ticket').build
                 ]).build
             ]
-
             stubUsersStore = double(WebapiUsersStore)
             allow(stubUsersStore).to receive(:findAll) {giveListOfUsers}
 
             userRepository = UserRepository.new(stubUsersStore, UserService.new)
-            mostSoldItem = userRepository.findItemMostLoyalUser()
 
-            expect(mostSoldItem).to eql(user2)
+            expect(userRepository.findItemMostLoyalUser()).to eql(user2)
         end
     end
 end
