@@ -13,4 +13,9 @@ class UserRepository
         users = @userStore.findAll()
         @userService.findMostLoyal(users)
     end
+
+    def findSpentByUser(email)
+        users = @userStore.findAll()
+        @userService.findSpentByUser(email, users)
+    end
 end

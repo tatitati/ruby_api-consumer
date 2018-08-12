@@ -48,5 +48,28 @@ describe "UserRepository" do
 
             expect(userRepository.findItemMostLoyalUser()).to eql([user2])
         end
+
+        it "Can find how much spent a user" do
+            giveListOfUsers = [
+                UserBuilder.new
+                    .withEmail('email1@domain.com')
+                    .withOrders([
+                        OrderBuilder.new.withPrice(15).build,
+                        OrderBuilder.new.withPrice(10).build,
+                    ]).build,
+                UserBuilder.new
+                    .withEmail('email2@domain.com')
+                    .withOrders([
+                        OrderBuilder.new.withPrice(22).build,
+                        OrderBuilder.new.withPrice(100).build,
+                    ]).build
+            ];
+            stubUsersStore = double(WebapiUsersStore)
+            allow(stubUsersStore).to receive(:findAll) {giveListOfUsers}
+
+            userRepository = UserRepository.new(stubUsersStore, UserService.new)
+
+            expect(userRepository.findSpentByUser('email2@domain.com')).to eql(122)
+        end
     end
 end
