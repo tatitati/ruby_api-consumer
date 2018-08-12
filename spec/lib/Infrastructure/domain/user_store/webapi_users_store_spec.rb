@@ -1,6 +1,4 @@
-require "infrastructure/domain/purchase_store/webapi_purchases_mapper"
 require "infrastructure/domain/purchase_store/webapi_purchases_store"
-require "infrastructure/domain/user_store/webapi_users_mapper"
 require "infrastructure/domain/user_store/webapi_users_store"
 
 describe "INTEGRATION TEST: WebapiUsersStore" do
