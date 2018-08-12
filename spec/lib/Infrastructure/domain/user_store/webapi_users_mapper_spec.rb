@@ -1,6 +1,5 @@
 require "domain/model/order_stream"
 require "infrastructure/domain/user_store/webapi_users_mapper"
-require "pp"
 
 describe "WebapiMapper" do
     context "Given JSON Response with list of Users" do

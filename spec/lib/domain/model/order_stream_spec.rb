@@ -13,21 +13,21 @@ describe "Order" do
 
     context "Given Some orders" do
         it "knows the total amount of orders in the stream" do
-            orderStream = OrderStreamBuilder.new.withOrders([
-                OrderBuilder.new.withPrice(100).build(),
-                OrderBuilder.new.withPrice(50).build()
-            ]).build
-            expect(orderStream.count).to eql(2)
+            expect(getStreamFixture().count).to eql(3)
         end
 
         it "Knows how much was spent in total" do
-            orderStream = OrderStreamBuilder.new.withOrders([
-                OrderBuilder.new.withPrice(100).build(),
-                OrderBuilder.new.withPrice(50).build(),
-                OrderBuilder.new.withPrice(9).build()
-            ]).build
-
-            expect(orderStream.totalSpent).to eql(159)
+            expect(getStreamFixture().totalSpent).to eql(159)
         end
     end
+end
+
+def getStreamFixture()
+    orderStream = OrderStreamBuilder.new.withOrders([
+        OrderBuilder.new.withPrice(100).build(),
+        OrderBuilder.new.withPrice(50).build(),
+        OrderBuilder.new.withPrice(9).build()
+    ]).build
+
+    orderStream
 end
