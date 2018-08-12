@@ -1,4 +1,3 @@
-require "pp"
 require 'json'
 
 class WebapiUsersMapper
@@ -9,9 +8,9 @@ class WebapiUsersMapper
         usersModels = {}
         usersData.each do |userData|
 
-            purchases = OrderStream.new([])
+            purchasesFouser = OrderStream.new([])
             if purchasesGroupedByuser.has_key?(userData['id'])
-                purchases = purchasesGroupedByuser[userData['id']]
+                purchasesFouser = purchasesGroupedByuser[userData['id']]
             end
 
             usersModels[userData['email']] = User.new(
@@ -20,7 +19,7 @@ class WebapiUsersMapper
                 userData['phone'],
                 userData['first_name'],
                 userData['last_name'],
-                purchases
+                purchasesFouser
             )
         end
 
