@@ -1,6 +1,5 @@
 require "domain/model/order_stream"
 require "infrastructure/domain/purchase_store/webapi_purchases_mapper"
-require "pp"
 
 describe "WebapiPurchasesMapper" do
     context "Given JSON Response with list of purchases" do
