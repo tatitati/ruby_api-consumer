@@ -1,17 +1,21 @@
 class UserService
     def findMostLoyal(usersList)
-        mostLoyalUser = nil
+        mostLoyalUser = {}
         usersList.each do |user|
-            if mostLoyalUser == nil
-                mostLoyalUser = user
+            if mostLoyalUser == {}
+                mostLoyalUser[user.countOrders] = [user]
                 next
             end
 
-            if user.countOrders > mostLoyalUser.countOrders
-                mostLoyalUser = user
+            if user.countOrders > mostLoyalUser.keys[0]
+                mostLoyalUser = {}
+                mostLoyalUser[user.countOrders] = [user]
+            elsif user.countOrders == mostLoyalUser.keys[0]
+                mostLoyalUser[user.countOrders].push(user)
             end
         end
-        mostLoyalUser
+
+        mostLoyalUser[mostLoyalUser.keys[0]]
     end
 
     def findMostSoldItem(usersList)

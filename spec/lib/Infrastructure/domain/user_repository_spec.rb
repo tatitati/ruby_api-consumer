@@ -1,7 +1,5 @@
 require "infrastructure/domain/user_repository"
 require "infrastructure/domain/user_store/webapi_users_store"
-require "pp"
-
 
 describe "UserRepository" do
     context "Given user store provides a list of users with their orders" do
@@ -48,7 +46,7 @@ describe "UserRepository" do
 
             userRepository = UserRepository.new(stubUsersStore, UserService.new)
 
-            expect(userRepository.findItemMostLoyalUser()).to eql(user2)
+            expect(userRepository.findItemMostLoyalUser()).to eql([user2])
         end
     end
 end
