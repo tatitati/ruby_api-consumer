@@ -4,7 +4,7 @@ require "infrastructure/domain/user_store/webapi_users_mapper"
 describe "WebapiUsersMapper" do
     context "Given JSON Response with list of Users" do
         it "It can create multiple users with empty order stream" do
-            domainModels = WebapiUsersMapper.new.toDomainModel(getGivenUsersResponseJson(), {})
+            domainModels = WebapiUsersMapper.toDomainModel(getGivenUsersResponseJson(), {})
 
             expect(domainModels.values.length).to eql(2)
             expect(domainModels.values).to all(be_an(User))
@@ -14,7 +14,7 @@ describe "WebapiUsersMapper" do
 
         it "It can create multiple users with order stream populated" do
             purchasesGroupedByUser = {"KZHR-1H35-2IH8-JXYN" => OrderStreamBuilder.new.withAmountOfOrders(3).build}
-            domainModels = WebapiUsersMapper.new.toDomainModel(getGivenUsersResponseJson(), purchasesGroupedByUser)
+            domainModels = WebapiUsersMapper.toDomainModel(getGivenUsersResponseJson(), purchasesGroupedByUser)
 
             expect(domainModels.values).to all(be_an(User))
             expect(domainModels["schimmel_quincy@ernser.io"].countOrders).to eql(3)

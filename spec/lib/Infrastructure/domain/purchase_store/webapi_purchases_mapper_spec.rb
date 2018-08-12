@@ -25,7 +25,7 @@ describe "WebapiPurchasesMapper" do
                 ]
             }';
 
-            domainModels = WebapiPurchasesMapper.new.toDomainModel(givenPurchasesResponseJson)
+            domainModels = WebapiPurchasesMapper.toDomainModel(givenPurchasesResponseJson)
 
             expect(domainModels.values).to all(be_an(OrderStream))
             expect(domainModels["FFWN-1CKR-X4WU-Q44M"].count).to eql(2)
